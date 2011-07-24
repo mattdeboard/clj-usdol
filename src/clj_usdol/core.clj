@@ -14,7 +14,7 @@
   (def secret s)
   )
 
-(auth-info "df34c7fa-ec1a-4ad5-b355-5ea9344d2f5e" "s05xGSqZeSzqbTEw")
+(auth-info "" "")
 
 (defn- get-timestamp []
   (str_/replace
