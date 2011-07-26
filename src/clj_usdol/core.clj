@@ -41,8 +41,8 @@
         url (str (str_/join "/" [usdol-url, api-ver, dataset, table]) "?")
         auth (str "Timestamp=" (get-timestamp) "&ApiKey=" token "&Signature="
                   (get-message qs))]
-      (client/get url
-                  {:headers {"Authorization" auth
-                             "Accept" "application/json"}})))
+    (client/get url
+                {:headers {"Authorization" auth
+                           "Accept" "application/json"}})))
 
 (def agency-data (fetch-data "FORMS" "Agencies"))
