@@ -4,7 +4,6 @@
             [clojure.string :as str_]
             [clj-usdol.oauth :as oauth]))
 
-(oauth/hmac "s05xGSqZeSzqbTEw" "/V1/FORMS/Agencies?&Timestamp=2011-07-26T01:58:15Z&ApiKey=df34c7fa-ec1a-4ad5-b355-5ea9344d2f5e")
 (def api-ver "V1")
 (def usdol-url "http://api.dol.gov")
 (declare token secret)
