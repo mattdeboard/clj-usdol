@@ -37,19 +37,12 @@
 (defn fetch-data [dataset, table]
   (let [qs (str "/" (apply str (interpose "/" [api-ver, dataset, table]))
                 "?&" (get-querystring {:Timestamp (get-timestamp)
-                                      :ApiKey token}))]
-    (prn (str "querystring: " qs))
-    (prn (str "hash: " (get-message qs)))
-    (client/get
-     (apply str (interpose "/" [usdol-url, api-ver, dataset, table]))
-     (prn (apply str (interpose "/" [usdol-url, api-ver, dataset, table])))
-     (prn (str "Timestamp=", (get-timestamp), "&ApiKey=", token, "&Signature=",
-               (get-message qs)))
-     {:headers {"Authorization",
-                (str "Timestamp=", (get-timestamp), "&ApiKey=",
-                     token "&Signature=" (get-message qs))}
-      }
-     )
-    )
-  )
+                                       :ApiKey token}))
+        url (str (str_/join "/" [usdol-url, api-ver, dataset, table]) "?")
+        auth (str "Timestamp=" (get-timestamp) "&ApiKey=" token "&Signature="
+                  (get-message qs))]
+      (prn (str "URL: " url))
+      (prn (str "Auth: " auth))
+      (client/get url
+                  {:headers {"Authorization", auth}})))
 (fetch-data "FORMS" "Agencies")
